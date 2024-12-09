@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline POS</title>
+    <link rel="stylesheet" href="./css/css/fontawesome.css">
+    <link rel="stylesheet" href="./css/css/brands.css">
+    <link rel="stylesheet" href="./css/css/solid.css">
+    <link rel="stylesheet" href="./css/main-style.css">
+</head>
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="./index.html"><i class="fa-solid fa-box"></i> Inventory</a>
+        <a href="./invoice.html"><i class="fa-solid fa-receipt"></i> Invoice</a>
+        <a href="./customers.html" class="active"><i class="fa-solid fa-person"></i> Customers</a>
+        <a href="javascript:void(0);" class="icon" onclick="showMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </a>
+    </div>
+
+    <h2 class="page-title"><i class="fa-solid fa-person"></i> Customers</h2>
+
+    <div class="controls">
+        <input type="text" placeholder="Search Customer" id="searchInput" onkeyup="searchCustomer()">
+    </div>
+
+    <div class="controls">
+        <button type="button" onclick="showAddCustomerModal()"><i class="fa-solid fa-plus"></i> Customer</button>
+        <label for="importFile"><i class="fa-solid fa-upload"></i> Import</label>
+        <input type="file" id="importFile" accept=".json" onchange="importCustomer(event)" hidden>
+        <button type="button" onclick="exportCustomer()"><i class="fa-solid fa-download"></i> Export</button>
+    </div>
+
+    <div class="table-container">
+        <div class="wrapper">
+            <table cellspacing="0" id="customerTable">
+                <thead>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th colspan="2">Action</th>
+                </thead>
+                <tbody>
+                    <!-- Product entries will go here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="add-product-modal" id="addCustomerModal">
+        <div class="form-container">
+            <form class="content" id="customerForm">
+                <div class="header">
+                    <h2>Add Customer</h2>
+                    <a href="javascript:void(0)" onclick="hideAddCustomerModal()"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+
+                <div class="body">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Address</label>
+                        <textarea id="customerAddress" required></textarea>
+                    </div>
+
+                    <input type="hidden" id="customerIndex">
+                </div>
+
+                <div class="footer">
+                    <button type="submit"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./js/customer.js"></script>
+</body>
+</html>

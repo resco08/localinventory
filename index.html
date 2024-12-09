@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline POS</title>
+    <link rel="stylesheet" href="./css/css/fontawesome.css">
+    <link rel="stylesheet" href="./css/css/brands.css">
+    <link rel="stylesheet" href="./css/css/solid.css">
+    <link rel="stylesheet" href="./css/main-style.css">
+</head>
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="./index.html" class="active"><i class="fa-solid fa-box"></i> Inventory</a>
+        <a href="./invoice.html"><i class="fa-solid fa-receipt"></i> Invoice</a>
+        <a href="./customers.html"><i class="fa-solid fa-person"></i> Customers</a>
+        <a href="javascript:void(0);" class="icon" onclick="showMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </a>
+    </div>
+
+    <h2 class="page-title"><i class="fa-solid fa-box"></i> Inventory</h2>
+
+    <div class="controls">
+        <input type="text" placeholder="Search Product" id="searchInput" onkeyup="searchProduct()">
+    </div>
+
+    <div class="controls">
+        <button type="button" onclick="showAddProductModal()"><i class="fa-solid fa-plus"></i> Product</button>
+        <label for="importFile"><i class="fa-solid fa-upload"></i> Import</label>
+        <input type="file" id="importFile" accept=".json" onchange="importInventory(event)" hidden>
+        <button type="button" onclick="exportInventory()"><i class="fa-solid fa-download"></i> Export</button>
+    </div>
+
+    <div class="table-container">
+        <div class="wrapper">
+            <table cellspacing="0" id="productTable">
+                <thead>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th colspan="2">Action</th>
+                </thead>
+                <tbody>
+                    <!-- Product entries will go here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="add-product-modal" id="addProductModal">
+        <div class="form-container">
+            <form class="content" id="inventoryForm">
+                <div class="header">
+                    <h2>Add Product</h2>
+                    <a href="javascript:void(0)" onclick="hideAddProductModal()"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+
+                <div class="body">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="productName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="productDescription" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" id="productQuantity" required min="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="number" id="productPrice" required min="0" step="0.01">
+                    </div>
+
+                    <input type="hidden" id="productIndex">
+                </div>
+
+                <div class="footer">
+                    <button type="submit"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./js/main-script.js"></script>
+</body>
+</html>
