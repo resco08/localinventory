@@ -9,8 +9,6 @@ const urlsToCache = [
   '/css/css/fontawesome.css',
   '/css/css/brands.css',
   '/css/css/solid.css',
-  '/css/webfonts/fa-solid-900.ttf',
-  '/css/webfonts/fa-solid-900.woff2',
   '/js/customer.js',
   '/js/invoice.js',
   '/js/main-script.js'
